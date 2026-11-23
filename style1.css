@@ -1,0 +1,225 @@
+/* InterWeb: The Night Before Christmas, the dark edition */
+:root {
+  --night: #0b0f1c;
+  --pine: #10261b;
+  --blood: #9b1c24;
+  --candle: #f3e2b3;
+  --frost: #a9c8d8;
+  --ash: #6f7686;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--night); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--candle);
+  font-family: "IM Fell English", Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+  line-height: 1.75;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(169,200,216,.22), transparent 28%),
+    linear-gradient(180deg, var(--night) 0%, #101a2a 60%, var(--pine) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Moon: the one memorable thing */
+.moon {
+  position: absolute;
+  top: 2.5rem;
+  right: 8%;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fffdf3, #d9dfd8 60%, #aab4b8);
+  box-shadow: 0 0 60px 18px rgba(169,200,216,.35);
+}
+
+/* Snow falling over everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(3px 3px at 90px 120px, #fff, transparent),
+    radial-gradient(2px 2px at 160px 60px, #dfe9ef, transparent),
+    radial-gradient(3px 3px at 230px 200px, #fff, transparent);
+  background-size: 260px 260px;
+  opacity: .7;
+  animation: snow 14s linear infinite;
+}
+
+@keyframes snow {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 260px; }
+}
+
+/* Navigation */
+nav {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+nav a {
+  color: var(--frost);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: .15rem;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  color: var(--blood);
+  border-bottom-color: var(--blood);
+  outline: none;
+}
+
+/* Header */
+header {
+  position: relative;
+  padding: 4rem 2rem 2rem;
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0;
+  font-family: "UnifrakturCook", "IM Fell English", Georgia, serif;
+  font-size: clamp(3.5rem, 11vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--candle);
+  text-shadow: 0 0 12px rgba(243,226,179,.55), 0 0 40px rgba(155,28,36,.6);
+  animation: flicker 5s infinite;
+}
+
+.tagline {
+  margin: .5rem 0 0;
+  color: var(--blood);
+  font-style: italic;
+  font-size: 1.4rem;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  41% { opacity: 1; }
+  42% { opacity: .55; }
+  43% { opacity: 1; }
+  46% { opacity: .75; }
+  47% { opacity: 1; }
+}
+
+/* Text box with limited width (set max-width to change it) */
+main {
+  position: relative;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1rem 2rem 4rem;
+}
+
+.stanza {
+  margin: 0 0 2.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--blood);
+  font-style: italic;
+}
+
+h2 {
+  font-family: "UnifrakturCook", Georgia, serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 3rem 0 1rem;
+  color: var(--frost);
+}
+
+p { margin: 0 0 1.25rem; }
+
+.whisper {
+  color: var(--ash);
+  font-size: 1rem;
+}
+
+/* Contact form */
+form { display: grid; gap: 1.25rem; }
+
+label { color: var(--frost); }
+
+input, textarea {
+  width: 100%;
+  margin-top: .3rem;
+  padding: .7rem .9rem;
+  font: inherit;
+  color: var(--candle);
+  background: rgba(11,15,28,.8);
+  border: 1px solid var(--ash);
+  border-radius: 2px;
+}
+
+input:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 2px solid var(--frost);
+  outline-offset: 2px;
+}
+
+button {
+  justify-self: start;
+  padding: .7rem 1.6rem;
+  font: inherit;
+  color: var(--candle);
+  background: var(--blood);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+button:hover { background: #b8252e; }
+
+footer {
+  position: relative;
+  padding: 2rem;
+  text-align: center;
+  color: var(--ash);
+  font-size: .95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before, h1 { animation: none; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 1.1rem; }
+  .moon { width: 4.5rem; height: 4.5rem; right: 1.5rem; }
+}
+
+/* Music controls (js/music.js) */
+.music-ui {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 20;
+  display: grid;
+  gap: .5rem;
+  justify-items: end;
+  font-size: .95rem;
+}
+
+.music-ui button {
+  padding: .5rem 1.1rem;
+  border: 1px solid var(--blood);
+  background: rgba(11,15,28,.85);
+  color: var(--candle);
+}
+
+.music-ui button:hover { background: var(--blood); }
+
+.music-file { color: var(--ash); cursor: pointer; }
+.music-file:hover { color: var(--frost); }
+.music-file input { display: none; }

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Watcher | InterWeb</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <!-- All styling is inside this file, so it works even if css/style1.css is missing -->
+  <style>
+/* InterWeb: The Night Before Christmas, the dark edition */
+:root {
+  --night: #0b0f1c;
+  --pine: #10261b;
+  --blood: #9b1c24;
+  --candle: #f3e2b3;
+  --frost: #a9c8d8;
+  --ash: #6f7686;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--night); }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--candle);
+  font-family: "IM Fell English", Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+  line-height: 1.75;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(169,200,216,.22), transparent 28%),
+    linear-gradient(180deg, var(--night) 0%, #101a2a 60%, var(--pine) 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Moon: the one memorable thing */
+.moon {
+  position: absolute;
+  top: 2.5rem;
+  right: 8%;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fffdf3, #d9dfd8 60%, #aab4b8);
+  box-shadow: 0 0 60px 18px rgba(169,200,216,.35);
+}
+
+/* Snow falling over everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(3px 3px at 90px 120px, #fff, transparent),
+    radial-gradient(2px 2px at 160px 60px, #dfe9ef, transparent),
+    radial-gradient(3px 3px at 230px 200px, #fff, transparent);
+  background-size: 260px 260px;
+  opacity: .7;
+  animation: snow 14s linear infinite;
+}
+
+@keyframes snow {
+  from { background-position: 0 0; }
+  to   { background-position: 60px 260px; }
+}
+
+/* Navigation */
+nav {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+nav a {
+  color: var(--frost);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: .15rem;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  color: var(--blood);
+  border-bottom-color: var(--blood);
+  outline: none;
+}
+
+/* Header */
+header {
+  position: relative;
+  padding: 4rem 2rem 2rem;
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 0;
+  font-family: "UnifrakturCook", "IM Fell English", Georgia, serif;
+  font-size: clamp(3.5rem, 11vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--candle);
+  text-shadow: 0 0 12px rgba(243,226,179,.55), 0 0 40px rgba(155,28,36,.6);
+  animation: flicker 5s infinite;
+}
+
+.tagline {
+  margin: .5rem 0 0;
+  color: var(--blood);
+  font-style: italic;
+  font-size: 1.4rem;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  41% { opacity: 1; }
+  42% { opacity: .55; }
+  43% { opacity: 1; }
+  46% { opacity: .75; }
+  47% { opacity: 1; }
+}
+
+/* Text box with limited width (set max-width to change it) */
+main {
+  position: relative;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1rem 2rem 4rem;
+}
+
+.stanza {
+  margin: 0 0 2.5rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--blood);
+  font-style: italic;
+}
+
+h2 {
+  font-family: "UnifrakturCook", Georgia, serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 3rem 0 1rem;
+  color: var(--frost);
+}
+
+p { margin: 0 0 1.25rem; }
+
+.whisper {
+  color: var(--ash);
+  font-size: 1rem;
+}
+
+/* Contact form */
+form { display: grid; gap: 1.25rem; }
+
+label { color: var(--frost); }
+
+input, textarea {
+  width: 100%;
+  margin-top: .3rem;
+  padding: .7rem .9rem;
+  font: inherit;
+  color: var(--candle);
+  background: rgba(11,15,28,.8);
+  border: 1px solid var(--ash);
+  border-radius: 2px;
+}
+
+input:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 2px solid var(--frost);
+  outline-offset: 2px;
+}
+
+button {
+  justify-self: start;
+  padding: .7rem 1.6rem;
+  font: inherit;
+  color: var(--candle);
+  background: var(--blood);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+button:hover { background: #b8252e; }
+
+footer {
+  position: relative;
+  padding: 2rem;
+  text-align: center;
+  color: var(--ash);
+  font-size: .95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before, h1 { animation: none; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 1.1rem; }
+  .moon { width: 4.5rem; height: 4.5rem; right: 1.5rem; }
+}
+
+/* Music controls (js/music.js) */
+.music-ui {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 20;
+  display: grid;
+  gap: .5rem;
+  justify-items: end;
+  font-size: .95rem;
+}
+
+.music-ui button {
+  padding: .5rem 1.1rem;
+  border: 1px solid var(--blood);
+  background: rgba(11,15,28,.85);
+  color: var(--candle);
+}
+
+.music-ui button:hover { background: var(--blood); }
+
+.music-file { color: var(--ash); cursor: pointer; }
+.music-file:hover { color: var(--frost); }
+.music-file input { display: none; }
+
+
+/* The Watcher page */
+.viewer {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  margin-top: 2rem;
+}
+#webcam-container { width: 280px; height: 280px; border: 2px dashed var(--ash); }
+#webcam-container:has(canvas) { border: 2px solid var(--blood); box-shadow: 0 0 30px rgba(155,28,36,.5); }
+#webcam-container canvas { display: block; width: 280px; height: 280px; }
+.row { margin-bottom: 1.25rem; }
+.row .name { display: flex; justify-content: space-between; gap: 1rem; }
+.bar { height: .6rem; background: rgba(169,200,216,.18); }
+.bar > span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--ash);
+  transition: width .2s linear;
+}
+.row.top .bar > span { background: var(--blood); box-shadow: 0 0 10px var(--blood); }
+.row.top .name { color: #fff; }
+#status { color: var(--ash); min-height: 1.75rem; }
+@media (max-width: 700px) { .viewer { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="moon" aria-hidden="true"></div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="teachable.html">The Watcher</a>
+    <a href="kontakt.html">Contact</a>
+  </nav>
+
+  <header>
+    <h1>The Watcher</h1>
+    <p class="tagline">It is looking back at you. Let it tell you what it sees.</p>
+  </header>
+
+  <main>
+    <button type="button" id="start" onclick="init()">Wake it up</button>
+    <p id="status"></p>
+
+    <div class="viewer">
+      <div id="webcam-container"></div>
+      <div id="label-container"></div>
+    </div>
+  </main>
+
+  <footer>Everything stays in your browser. The camera never leaves the room.</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+  <script>
+    // Your model from the Teachable Machine export panel
+    const MODEL_URL = "https://teachablemachine.withgoogle.com/models/YOOlDbBkv/";
+
+    // The names "Awake" and "Not awake" came out swapped. This swaps the two names on screen.
+    // The proper fix is to rename the classes in Teachable Machine and update the model;
+    // when you have done that, set this to false.
+    const SWAP_LABELS = false;
+
+    // How quickly the numbers follow the camera (0.1 = slow and calm, 1 = instant)
+    const SMOOTHING = 0.3;
+
+    let model, webcam, labelContainer, maxPredictions, smooth = [];
+    const statusEl = document.getElementById("status");
+
+    async function init() {
+      const startBtn = document.getElementById("start");
+      startBtn.disabled = true;
+      statusEl.textContent = "Loading the model...";
+      try {
+        if (typeof tmImage === "undefined") {
+          throw new Error("The Teachable Machine libraries did not load (check your internet connection or ad blocker).");
+        }
+        model = await tmImage.load(MODEL_URL + "model.json", MODEL_URL + "metadata.json");
+        maxPredictions = model.getTotalClasses();
+
+        const flip = true; // mirror the webcam
+        webcam = new tmImage.Webcam(280, 280, flip);
+        statusEl.textContent = "Allow camera access when asked...";
+        await webcam.setup();
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) {
+          smooth.push(0);
+          const row = document.createElement("div");
+          row.className = "row";
+          row.innerHTML =
+            '<div class="name"><span class="label"></span><span class="pct">0%</span></div>' +
+            '<div class="bar"><span></span></div>';
+          labelContainer.appendChild(row);
+        }
+        startBtn.style.display = "none";
+        statusEl.textContent = "";
+      } catch (err) {
+        console.error(err);
+        startBtn.disabled = false;
+        let msg = err.message;
+        if (err.name === "NotAllowedError") {
+          msg = "Camera permission was denied. Allow the camera in the address bar and try again.";
+        } else if (err.name === "NotFoundError") {
+          msg = "No camera was found.";
+        } else if (err.name === "TypeError" && /fetch/i.test(err.message)) {
+          msg = "Could not download the model from " + MODEL_URL +
+            " (check your internet connection and that the model link is correct and shared).";
+        }
+        statusEl.textContent = "Could not start: " + msg;
+      }
+    }
+
+    async function loop() {
+      webcam.update();
+      await predict();
+      window.requestAnimationFrame(loop);
+    }
+
+    // Round to whole percentages that always add up to exactly 100
+    function toPercents(values) {
+      const total = values.reduce((a, b) => a + b, 0) || 1;
+      const raw = values.map(v => v / total * 100);
+      const out = raw.map(Math.floor);
+      let left = 100 - out.reduce((a, b) => a + b, 0);
+      raw.map((v, i) => [v - Math.floor(v), i])
+         .sort((a, b) => b[0] - a[0])
+         .forEach(([, i]) => { if (left > 0) { out[i]++; left--; } });
+      return out;
+    }
+
+    async function predict() {
+      const prediction = await model.predict(webcam.canvas);
+      for (let i = 0; i < maxPredictions; i++) {
+        smooth[i] += (prediction[i].probability - smooth[i]) * SMOOTHING;
+      }
+      const pcts = toPercents(smooth);
+      let best = 0;
+      for (let i = 1; i < maxPredictions; i++) if (pcts[i] > pcts[best]) best = i;
+
+      for (let i = 0; i < maxPredictions; i++) {
+        // swap the two names if SWAP_LABELS is on
+        const nameIndex = (SWAP_LABELS && maxPredictions === 2) ? 1 - i : i;
+        const row = labelContainer.childNodes[i];
+        row.querySelector(".label").textContent = prediction[nameIndex].className;
+        row.querySelector(".pct").textContent = pcts[i] + "%";
+        row.querySelector(".bar span").style.width = pcts[i] + "%";
+        row.classList.toggle("top", i === best);
+      }
+    }
+  </script>
+  <script src="js/music.js"></script>
+</body>
+</html>
